@@ -15,6 +15,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
@@ -43,7 +44,7 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
         
         Point[] pts3=new Point[]{new Point(25, 25),new Point(15, 15)};
         Blueprint bp3=new Blueprint("Pancrasio", "EstadioMayorA",pts3);
-        blueprints.put(new Tuple<>(bp1.getAuthor(),bp3.getName()), bp3);
+        blueprints.put(new Tuple<>(bp3.getAuthor(),bp3.getName()), bp3);
         
     }    
     
@@ -78,8 +79,8 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
 	@Override
 	public Set<Blueprint> getAllBlueprints() {
 
-		Set<Blueprint> blueprint= (Set<Blueprint>) blueprints.get(blueprints);
-		return blueprint;
+		
+		return blueprints.values().stream().collect(Collectors.toSet());
 	}
 
 

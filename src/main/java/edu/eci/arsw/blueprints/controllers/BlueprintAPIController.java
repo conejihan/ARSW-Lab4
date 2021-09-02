@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.eci.arsw.blueprints.persistence.BlueprintNotFoundException;
 import edu.eci.arsw.blueprints.services.BlueprintsServices;
 
 /**
@@ -34,7 +35,6 @@ public class BlueprintAPIController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<?> GetRecurso(){
-		//obtener datos que se enviarán a través del API
 		return new ResponseEntity<>(bps.getAllBlueprints(),HttpStatus.ACCEPTED);   
 	}
     
