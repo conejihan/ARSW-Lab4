@@ -14,6 +14,9 @@ import edu.eci.arsw.blueprints.persistence.BlueprintsPersistence;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -57,8 +60,15 @@ public class BlueprintsServices {
      * @throws BlueprintNotFoundException if the given author doesn't exist
      */
     public Set<Blueprint> getBlueprintsByAuthor(String author) throws BlueprintNotFoundException{
-        return bpp.getBlueprintsByAuthor(author);
+    	Set<Blueprint> bp = bpp.getBlueprintsByAuthor(author);
+        if(bp.isEmpty()) {
+        	throw new BlueprintNotFoundException("Author Not Found");
+        }
+        else {
+        	return bp;
+        }
         		
     }
+    
     
 }
