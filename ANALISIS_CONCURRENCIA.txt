@@ -1,0 +1,7 @@
+Qué condiciones de carrera se podrían presentar?
+
+Al realizar una peticion PUT o POST y al mismo tiempo una peticion GET que involucre 
+al objeto modificado o creado con los metodos PUt y POST, puede que no retorne el objeto creado/modificado.
+
+Cuales son las respectivas regiones críticas?
+PUT, POST, GET ya que todas estas acceden al recurso BlueprintServices.

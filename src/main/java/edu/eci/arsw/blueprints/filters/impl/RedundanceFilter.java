@@ -9,12 +9,13 @@ import org.springframework.stereotype.Service;
 import edu.eci.arsw.blueprints.filters.BlueprintFilters;
 import edu.eci.arsw.blueprints.model.Blueprint;
 import edu.eci.arsw.blueprints.model.Point;
+import edu.eci.arsw.blueprints.persistence.BlueprintNotFoundException;
 
 
 public class RedundanceFilter implements BlueprintFilters{
 
 	@Override
-	public Blueprint filter(Blueprint bp) {
+	public Blueprint filter(Blueprint bp) throws BlueprintNotFoundException {
 		
 		
 		List<Point> originalP = bp.getPoints();

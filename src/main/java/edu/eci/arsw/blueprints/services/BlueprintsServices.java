@@ -37,6 +37,7 @@ public class BlueprintsServices {
         bpp.saveBlueprint(bp);
     }
     
+    
     public Set<Blueprint> getAllBlueprints(){
         return bpp.getAllBlueprints();
     }
@@ -46,11 +47,18 @@ public class BlueprintsServices {
      * @param author blueprint's author
      * @param name blueprint's name
      * @return the blueprint of the given name created by the given author
-     * @throws BlueprintNotFoundException if there is no such blueprint
+     * @throws Exception 
      */
-    public Blueprint getBlueprint(String author,String name) throws BlueprintNotFoundException{
-        
-        return filter.filter(bpp.getBlueprint(author, name));
+    public Blueprint getBlueprint(String author,String name) throws Exception{
+    	Blueprint bp = filter.filter(bpp.getBlueprint(author, name));
+    	if(bp.equals("")) {
+    		throw new BlueprintNotFoundException("Author Not Found");
+    	}
+    	else {
+    		return bp;
+    	}
+       
+    	//return bpp.getBlueprint(author, name);
     }
     
     /**
